@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import './formBook.css';
+import "./formBook.css";
 
 class FormBook extends Component {
   constructor(props) {
@@ -14,7 +14,6 @@ class FormBook extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clearAll = this.clearAll.bind(this);
-
   }
 
   handleChange(e) {
@@ -49,7 +48,7 @@ class FormBook extends Component {
   }
 
   render() {
-    const { title, author, genre } = this.state;
+    const { title, author, genre, cover } = this.state;
     return (
       <div className="form-book-container">
         <h3 className="form-book-header">Add a new book</h3>
@@ -76,6 +75,17 @@ class FormBook extends Component {
               required
             />
           </label>
+          <label htmlFor="cover" className="form-book-cover">
+            <input
+              type="text"
+              id="cover"
+              name="cover"
+              value={cover}
+              onChange={this.handleChange}
+              placeholder=" Book cover"
+              required
+            />
+          </label>
           <label htmlFor="genre" className="form-book-genre">
             <input
               type="text"
@@ -87,7 +97,9 @@ class FormBook extends Component {
               required
             />
           </label>
-          <button type="submit" className="form-book-button">Add new book</button>
+          <button type="submit" className="form-book-button">
+            Add new book
+          </button>
         </form>
       </div>
     );
