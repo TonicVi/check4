@@ -3,6 +3,12 @@ const app = express();
 const port = 4000;
 const bodyParser = require("body-parser");
 const connection = require("./conf");
+const argon2 = require('argon2');
+const jwt = require('jsonwebtoken');
+const expressJWT = require('express-jwt');
+
+// const { authenticate } = require('./authenticate');
+const signup = require('./signup');
 
 app.use(bodyParser.json());
 app.use(
@@ -11,6 +17,46 @@ app.use(
   })
 );
 
+
+//SIGN IN
+app.post('/next/signin', (req, res) => {
+  const secret = process.env.JWT_SECRET;
+
+  const { login, password } = req.body;
+  // const sqlQuery = 'SELECT * FROM user WHERE login = ?';
+  connection.query('SELECT * FROM user WHERE login = ?', login, async (error, results) => {
+    try {
+      if (error) {
+        res.status(500).json({
+          status: 'error',
+          message: error
+        });
+      }
+      const user = results[0];
+      if (!user) {
+        throw new Error('User not found');
+      }
+      const isPasswordCorrect = await argon2.verify(user.password, password);
+      if (!isPasswordCorrect) {
+        throw new Error('Invalid Password');
+      }
+      const payload = {
+        id: user.id,
+        name: user.name,
+      };
+      const token = {
+        token: jwt.sign(payload, secret, { expiresIn: '6h' })
+      };
+      res.status(200).json(token);
+    } catch (err) {
+      if (err.message === 'Invalid Password') {
+        res.status(401).send('invalid credentials');
+      }
+    }
+  });
+});
+
+// });
 //CREATE A NEW BOOK
 app.post("/next/book", (req, res) => {
   const formData = req.body;
@@ -67,22 +113,7 @@ app.post("/next/fav/:id", (req, res) => {
   });
 });
 
-app.post("/next/user", (req, res) => {
-  const formData = req.body;
-  // const { name, login, password } = req.body;
-  connection.query(`INSERT INTO user SET ?`, formData, (err, results) => {
-    if (err) {
-      res.status(500).json({
-        status: err
-      });
-    }
-    res.status(201).json({
-      status: "success",
-      message: { results }
-    });
-  });
-});
-
+app.post("/next/user", signup)
 
 app.post("/next/admin", (req, res) => {
   const formData = req.body;
