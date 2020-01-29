@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import AdminPage from "./components/admin/AdminPage";
-import BookPage from "./components/admin/BookPage";
 import UserPage from "./components/user/UserPage";
 import Welcome from './components/Welcome';
 import "./App.css";
@@ -12,7 +11,7 @@ function App() {
       <Route path="/admin">
         <AdminPage />
       </Route>
-      <Route path="/user/book">
+      <Route path="/user">
         <UserPage />
       </Route>
       <Route path="/">
