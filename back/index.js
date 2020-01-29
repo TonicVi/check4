@@ -15,7 +15,7 @@ app.use(
 app.post('/next/book', (req, res) => {
   const formData = req.body;
   connection.query('INSERT INTO book SET ?', formData, (err, results) => {
-        if (err) {
+    if (err) {
       res.status(500).json({
         status: err
       });
@@ -26,6 +26,32 @@ app.post('/next/book', (req, res) => {
     });
   });
 });
+
+//GET ALL BOOKS ADMIN
+app.get("/next/book", (req, res) => {
+  connection.query(`SELECT * FROM book`, (err, results) => {
+    if (err) {
+      res.status(500).json({
+        status: err
+      });
+    } else {
+      res.json( results );
+    }
+  });
+});
+
+
+//DELETE A BOOK ADMIN
+// app.delete('/next/book/:id', (req, res) => {
+//   const { id } = req.params;
+//   connection.query(`DELETE FROM book WHERE id = ${id}`, err => {
+//     if (err) {
+//       res.status(500).send('Error while deleting a book');
+//     } else {
+//       res.status(200).send(`Book deleted`)
+//     }
+//   });
+// });
 
 app.post("/next/admin", (req, res) => {
   const formData = req.body;
@@ -43,10 +69,10 @@ app.post("/next/admin", (req, res) => {
   });
 });
 
-app.post('/next/user', (req, res) => {
+app.post("/next/user", (req, res) => {
   const formData = req.body;
   connection.query(`INSERT INTO user SET ?`, formData, (err, results) => {
-        if (err) {
+    if (err) {
       res.status(500).json({
         status: err
       });
