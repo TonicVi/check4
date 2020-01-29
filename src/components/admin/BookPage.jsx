@@ -9,6 +9,7 @@ class BookPage extends Component {
       allBooks: []
     };
     this.getData = this.getData.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -18,10 +19,6 @@ class BookPage extends Component {
   getData() {
     axios
       .get("/next/book")
-      // axios({
-      //   method: "get",
-      //   url: "/next/book"
-      // })
       .then(res => res.data)
       .then(data =>
         this.setState({
@@ -29,6 +26,11 @@ class BookPage extends Component {
         })
       );
   }
+
+  // handleDelete(id) {
+  //   axios
+  //   .delete(`/next/book/${id}`)
+  // }
 
   render() {
     // return <p>lqsdn</p>;

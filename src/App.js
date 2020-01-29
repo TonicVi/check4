@@ -7,10 +7,10 @@ import "./App.css";
 function App() {
   return (
     <Switch>
-      <Route path="/admin/newbook">
+      <Route path='/admin/newbook'>
         <FormBook />
       </Route>
-      <Route path="/admin/book">
+      <Route path='/admin/book'>
         <BookPage />
       </Route>
     </Switch>
