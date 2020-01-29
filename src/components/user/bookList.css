@@ -1,0 +1,31 @@
+.user-list-container {
+  display: grid;
+  grid-template-columns: 5% 25% 1% 45% 20% 4%;
+  grid-template-rows: 4.5% 30% 30% 30% 4.5%;
+  margin: 15px;
+}
+
+.user-list-cover {
+  grid-area: 1 / 2 / 6 / 3;
+  max-width: 100%;
+  max-height: auto;
+  padding-right: 2px;
+}
+
+.user-list-title {
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+.user-list-author {
+  grid-area: 3 / 4 / 4 / 5;
+}
+
+.user-list-genre {
+  grid-area: 4 / 4 / 5 / 5;
+}
+
+.user-fav-button {
+  grid-area: 3 / 5 / 4 / 6;
+  background: transparent;
+  border: none;
+}
