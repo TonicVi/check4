@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import FormBook from "./components/admin/FormBook";
 import BookPage from "./components/admin/BookPage";
-import UserPage from './components/user/UserPage';
+import UserPage from "./components/user/UserPage";
+import Welcome from './components/Welcome';
 import "./App.css";
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
       </Route>
       <Route path="/user/book">
         <UserPage />
+      </Route>
+      <Route path="/">
+        <Welcome />
       </Route>
     </Switch>
   );
