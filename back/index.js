@@ -12,10 +12,10 @@ app.use(
 );
 
 //CREATE A NEW BOOK
-app.post('/next/book', (req, res) => {
+app.post("/next/book", (req, res) => {
   const formData = req.body;
-  connection.query('INSERT INTO book SET ?', formData, (err, results) => {
-        if (err) {
+  connection.query("INSERT INTO book SET ?", formData, (err, results) => {
+    if (err) {
       res.status(500).json({
         status: err
       });
@@ -24,6 +24,19 @@ app.post('/next/book', (req, res) => {
       status: "success",
       message: { results }
     });
+  });
+});
+
+//GET ALL BOOKS ADMIN
+app.get("/next/book", (req, res) => {
+  connection.query(`SELECT * FROM book`, (err, results) => {
+    if (err) {
+      res.status(500).json({
+        status: err
+      });
+    } else {
+      res.json( results );
+    }
   });
 });
 
@@ -43,10 +56,10 @@ app.post("/next/admin", (req, res) => {
   });
 });
 
-app.post('/next/user', (req, res) => {
+app.post("/next/user", (req, res) => {
   const formData = req.body;
   connection.query(`INSERT INTO user SET ?`, formData, (err, results) => {
-        if (err) {
+    if (err) {
       res.status(500).json({
         status: err
       });
