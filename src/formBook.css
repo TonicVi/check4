@@ -1,0 +1,35 @@
+.form-book-container {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-rows: 20% 80%;
+}
+
+.form-book-header {
+  justify-self: center;
+  align-self: center
+}
+
+.form-book {
+  display: grid;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-template-columns: 20% 60% 20%;
+  justify-items: center;
+  align-items: center;
+}
+
+.form-book-title {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.form-book-author {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.form-book-genre {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.form-book-button {
+  grid-area: 5 / 2 / 6 / 3;
+}
