@@ -11,6 +11,22 @@ app.use(
   })
 );
 
+//CREATE A NEW BOOK
+app.post('/next/book', (req, res) => {
+  const formData = req.body;
+  connection.query('INSERT INTO book SET ?', formData, (err, results) => {
+        if (err) {
+      res.status(500).json({
+        status: err
+      });
+    }
+    res.status(201).json({
+      status: "success",
+      message: { results }
+    });
+  });
+});
+
 app.post("/next/admin", (req, res) => {
   const formData = req.body;
   // const { name, login, password } = req.body;
