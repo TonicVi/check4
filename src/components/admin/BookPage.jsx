@@ -9,7 +9,7 @@ class BookPage extends Component {
       allBooks: []
     };
     this.getData = this.getData.bind(this);
-    // this.handleDelete = this.handleDelete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -27,15 +27,16 @@ class BookPage extends Component {
       );
   }
 
-  // handleDelete(id) {
-  //   axios
-  //   .delete(`/next/book/${id}`)
-  // }
+  handleDelete(bookId) {
+    axios
+    .delete(`/next/book/${bookId}`)
+    .then(this.getData())
+  }
 
   render() {
     // return <p>lqsdn</p>;
     const  { allBooks }  = this.state;
-    return <BookList books={allBooks} />;
+    return <BookList books={allBooks} handleDelete={this.handleDelete} />;
   }
 }
 
