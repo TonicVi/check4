@@ -40,18 +40,32 @@ app.get("/next/book", (req, res) => {
   });
 });
 
-// DELETE A BOOK ADMIN
-app.delete('/next/book/:id', (req, res) => {
-  const { id } = req.params;
-  connection.query(`DELETE FROM book WHERE id = ${id}`, err => {
+//GET ALL BOOK USER
+app.get("/next/list", (req, res) => {
+  connection.query(`SELECT *, book.id AS bookID, next.id AS nextId FROM book JOIN next`, (err, results) => {
     if (err) {
-      res.status(500).send('Error while deleting a book');
+      res.status(500).json({
+        status: err
+      });
     } else {
-      res.status(200).send(`Book deleted`)
+      res.json(results);
     }
   });
 });
 
+// DELETE A BOOK ADMIN
+app.delete("/next/book/:id", (req, res) => {
+  const { id } = req.params;
+  connection.query(`DELETE FROM book WHERE id = ${id}`, err => {
+    if (err) {
+      res.status(500).send("Error while deleting a book");
+    } else {
+      res.status(200).send(`Book deleted`);
+    }
+  });
+});
+
+//ADD A BOOK TO READING LIST
 app.post("/next/fav/:id", (req, res) => {
   const formData = req.body;
   connection.query("INSERT INTO next SET ?", formData, (err, results) => {
@@ -65,6 +79,22 @@ app.post("/next/fav/:id", (req, res) => {
       message: { results }
     });
   });
+});
+
+//GET MY NEXT BOOKS
+app.get("/next/fav/book", (req, res) => {
+  connection.query(
+    "SELECT book.* FROM book JOIN next WHERE book.id = next.id_book",
+    (err, results) => {
+      if (err) {
+        res.status(500).json({
+          status: err
+        });
+      } else {
+        res.json(results);
+      }
+    }
+  );
 });
 
 app.post("/next/user", (req, res) => {
@@ -82,7 +112,6 @@ app.post("/next/user", (req, res) => {
     });
   });
 });
-
 
 app.post("/next/admin", (req, res) => {
   const formData = req.body;

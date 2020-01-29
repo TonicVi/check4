@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import FormBook from "./components/admin/FormBook";
-import BookPage from "./components/admin/BookPage";
+import AdminPage from "./components/admin/AdminPage";
 import UserPage from "./components/user/UserPage";
 import Welcome from './components/Welcome';
 import "./App.css";
@@ -9,13 +8,10 @@ import "./App.css";
 function App() {
   return (
     <Switch>
-      <Route path="/admin/newbook">
-        <FormBook />
+      <Route path="/admin">
+        <AdminPage />
       </Route>
-      <Route path="/admin/book">
-        <BookPage />
-      </Route>
-      <Route path="/user/book">
+      <Route path="/user">
         <UserPage />
       </Route>
       <Route path="/">
