@@ -11,12 +11,13 @@ function UserPage() {
       <BurgerMenuUser />
     </div>
     <Switch>
-      <Route path="/user/allbooks">
-        <AllBooks />
-      </Route>
       <Route path="/user/nextbooks">
         <NextBooks />
       </Route>
+      <Route path="/user">
+        <AllBooks />
+      </Route>
+
     </Switch>
     </>
   );

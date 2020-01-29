@@ -42,7 +42,7 @@ app.get("/next/book", (req, res) => {
 
 //GET ALL BOOK USER
 app.get("/next/list", (req, res) => {
-  connection.query(`SELECT *, book.id AS bookID, next.id AS nextId FROM book JOIN next`, (err, results) => {
+  connection.query(`SELECT DISTINCT book.id AS bookID, book.title, book.genre, book.author, book.cover, next.id_book FROM book LEFT JOIN next ON next.id_book = book.id`, (err, results) => {
     if (err) {
       res.status(500).json({
         status: err

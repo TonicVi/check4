@@ -30,12 +30,15 @@ class BurgerMenu extends Component {
         isOpen={menuOpen}
         onStateChange={state => this.handleStateChange(state)}
       >
-        <NavLink to="/admin/newbook" className="menu-item">
+        <NavLink to="/admin" className="menu-item">
           <div onClick={() => this.closeMenu()}>Add a book</div>
         </NavLink>
 
         <NavLink to="/admin/book" className="menu-item">
           <div onClick={() => this.closeMenu()}>Manage Books</div>
+        </NavLink>
+        <NavLink to="/" className="menu-item">
+          <div onClick={() => this.closeMenu()}>Log out</div>
         </NavLink>
       </Menu>
     );

@@ -39,7 +39,7 @@ class AllBooks extends Component {
     const { allBooks } = this.state;
     return (
       <>
-        <h4>All Books</h4>
+        <h4>All the possibilities</h4>
         <BookList books={allBooks} makeFav={this.makeFav} />
       </>
     );

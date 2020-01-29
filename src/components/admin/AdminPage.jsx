@@ -11,11 +11,11 @@ function AdminPage() {
       <BurgerMenuAdmin />
     </div>
     <Switch>
-      <Route path="/admin/newbook">
-        <FormBook />
-      </Route>
       <Route path="/admin/book">
         <BookPage />
+      </Route>
+      <Route path="/admin">
+        <FormBook />
       </Route>
     </Switch>
     </>
