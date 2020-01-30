@@ -26,4 +26,6 @@
 
 .admin-delete-button {
   grid-area: 3 / 5 / 4 / 6;
+  background: transparent;
+  border: none;
 }

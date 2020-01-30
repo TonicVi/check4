@@ -4,13 +4,13 @@ import empty from '../../images/empty.png';
 import full from '../../images/full.png';
 
 function BookList(props) {
-  const { books, makeFav } = props;
+  const { books, makeFav, deleteFav } = props;
   let star;
   return books.map(book => {
     if (book.bookID === book.id_book) {
-      star = <button type="button" className="user-fav-button" onClick={() => makeFav(bookId)}><img src={full} alt="fav-star"/></button>
+      star = <button type="button" className="user-fav-button" onClick={() => deleteFav(book.nextId)}><img src={full} alt="fav-star"/></button>
     } else {
-      star = <button type="button" className="user-fav-button"><img src={empty} alt="fav-star"/></button>
+      star = <button type="button" className="user-fav-button"  onClick={() => makeFav(bookId)}><img src={empty} alt="fav-star"/></button>
 
     }
     const bookId = book.bookID;

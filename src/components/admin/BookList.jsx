@@ -1,5 +1,6 @@
 import React from "react";
 import './bookList.css';
+import remove from '../../images/remove.png';
 
 function BookList(props) {
   const { books, handleDelete } = props;
@@ -11,7 +12,7 @@ function BookList(props) {
         <h4 className="admin-list-title">{book.title}</h4>
         <p className="admin-list-author">{book.author}</p>
         <p className="admin-list-genre">{book.genre}</p>
-        <button type="button" className="admin-delete-button" onClick={() => handleDelete(bookId)}>plop</button>
+        <button type="button" className="admin-delete-button" onClick={() => handleDelete(bookId)}><img src={remove} alt='delete icon' /></button>
       </div>
     );
   });

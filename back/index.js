@@ -42,15 +42,18 @@ app.get("/next/book", (req, res) => {
 
 //GET ALL BOOK USER
 app.get("/next/list", (req, res) => {
-  connection.query(`SELECT DISTINCT book.id AS bookID, book.title, book.genre, book.author, book.cover, next.id_book FROM book LEFT JOIN next ON next.id_book = book.id`, (err, results) => {
-    if (err) {
-      res.status(500).json({
-        status: err
-      });
-    } else {
-      res.json(results);
+  connection.query(
+    `SELECT DISTINCT book.id AS bookID, book.title, book.genre, book.author, book.cover, next.id_book, next.id AS nextId FROM book LEFT JOIN next ON next.id_book = book.id`,
+    (err, results) => {
+      if (err) {
+        res.status(500).json({
+          status: err
+        });
+      } else {
+        res.json(results);
+      }
     }
-  });
+  );
 });
 
 // DELETE A BOOK ADMIN
@@ -81,10 +84,24 @@ app.post("/next/fav/:id", (req, res) => {
   });
 });
 
+//REMOVE A BOOK FROM READING LIST
+app.delete("/next/fav/:id", (req, res) => {
+  const { id } = req.params;
+  connection.query(`DELETE FROM next WHERE id = ? `, id, (err, results) => {
+    if (err) {
+      res.status(500).json({
+        status: err
+      });
+    } else {
+      res.status(200).send("Book removed from list");
+    }
+  });
+});
+
 //GET MY NEXT BOOKS
 app.get("/next/fav/book", (req, res) => {
   connection.query(
-    "SELECT book.* FROM book JOIN next WHERE book.id = next.id_book",
+    "SELECT book.*, next.id AS nextId FROM book JOIN next WHERE book.id = next.id_book",
     (err, results) => {
       if (err) {
         res.status(500).json({
