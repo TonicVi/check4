@@ -68,6 +68,18 @@ app.delete("/next/book/:id", (req, res) => {
   });
 });
 
+//DELETE FAV LINKED TO BOOK ON ADMIN
+app.delete('/next/book/fav/:id', (req, res) => {
+  const { id } = req.params;
+  connection.query(`DELETE FROM next WHERE id_book = ${id}`, err => {
+    if (err) {
+      res.status(500).send('Error while deleting favorites');
+    } else {
+      res.status(200).send('Favorites were deleted');
+    }
+  });
+});
+
 //ADD A BOOK TO READING LIST
 app.post("/next/fav/:id", (req, res) => {
   const formData = req.body;

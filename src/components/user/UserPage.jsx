@@ -23,14 +23,9 @@ function UserPage() {
         <Route
           path="/user"
           render={() => (
-            <>
             <div className="user-books-page">
               <AllBooks />
             </div>
-            <div className="user-next-page2">
-              <NextBooks />
-            </div>
-            </>
           )}
         />
       </Switch>

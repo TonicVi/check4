@@ -13,6 +13,7 @@ function BookList(props) {
         <p className="admin-list-author">{book.author}</p>
         <p className="admin-list-genre">{book.genre}</p>
         <button type="button" className="admin-delete-button" onClick={() => handleDelete(bookId)}><img src={remove} alt='delete icon' className="cross" /></button>
+        <button type="button" className="admin-modify-button">plop</button>
       </div>
     );
   });

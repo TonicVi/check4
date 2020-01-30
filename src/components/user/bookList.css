@@ -55,6 +55,7 @@
 .next-books-container {
   display: grid;
   grid-template-rows: 5% 5% auto;
+  height: 100vh;
 }
 
 .next-books-title {
@@ -113,29 +114,41 @@
     display: none;
   }
 
-  .user-page {
+  .all-books-container {
     display: grid;
     grid-template-columns: 35% 65%;
+    grid-template-rows: 5% 95%;
   }
 
   .user-next-page2 {
-    grid-column-start: 1;
     display: block;
-    position: absolute;
-    width: 35%;
+    grid-area: 1 / 1 / 4 / 2;
     background-color: #a13941ff;
-    height: 1000vh;
+    position: fixed;
+    overflow: auto;
+    width: 35%;
   }
 
-  .user-books-page {
-    grid-column-start: 2;
+  .all-books-title {
+    grid-area: 1 / 2 / 2 / 3;
+    align-self: center;
   }
 
+  .all-books-list {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  .user-next-page2 {
+    display: block;
+    height: 100vh;
+  }
+
+  .next-books-container {
+    display: grid;
+    grid-template-rows: 10% 7% auto;
+  }
+  
   .next-books-title {
     color: #fcf6f5;
-  }
-
-  .next-books-list {
-    margin-top: 70px;
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import BookList from "./BookList";
+import NextBooks from './NextBooks';
 import "./bookList.css";
 
 class AllBooks extends Component {
@@ -46,6 +47,9 @@ class AllBooks extends Component {
     const { allBooks } = this.state;
     return (
       <div className="all-books-container">
+        <div className="user-next-page2">
+          <NextBooks />
+        </div>
         <h4 className="all-books-title">All the possibilities</h4>
         <div className="all-books-list">
           <BookList
