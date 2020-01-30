@@ -10,6 +10,7 @@ class AllBooks extends Component {
     };
     this.getData = this.getData.bind(this);
     this.makeFav = this.makeFav.bind(this);
+    this.deleteFav = this.deleteFav.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +23,13 @@ class AllBooks extends Component {
       id_book: bookId,
       id_user: 1
     })
+    .then(this.getData());
+  }
+
+  deleteFav(nextId) {
+    axios
+    .delete(`/next/fav/${nextId}`)
+    .then(this.getData());
   }
 
   getData() {
@@ -40,7 +48,7 @@ class AllBooks extends Component {
     return (
       <>
         <h4>All the possibilities</h4>
-        <BookList books={allBooks} makeFav={this.makeFav} />
+        <BookList books={allBooks} makeFav={this.makeFav} deleteFav={this.deleteFav} />
       </>
     );
   }

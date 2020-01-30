@@ -9,12 +9,13 @@ class NextBooks extends Component {
       nextBooks: []
     };
     this.getData = this.getData.bind(this);
+    this.deleteFav = this.deleteFav.bind(this);
   }
 
   componentDidMount() {
     this.getData();
   }
-  
+
   getData() {
     axios
       .get("/next/fav/book")
@@ -26,12 +27,16 @@ class NextBooks extends Component {
       );
   }
 
+  deleteFav(nextId) {
+    axios.delete(`/next/fav/${nextId}`).then(this.getData());
+  }
+
   render() {
     const { nextBooks } = this.state;
     return (
       <>
         <h4>My Next Readings</h4>
-        <NextList nextBooks={nextBooks} />
+        <NextList nextBooks={nextBooks} deleteFav={this.deleteFav} />
       </>
     );
   }
