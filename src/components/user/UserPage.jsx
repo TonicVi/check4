@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import AllBooks from "./AllBooks";
 import NextBooks from "./NextBooks";
+import SideBar from './SideBar';
 import "./bookList.css";
 import BurgerMenuUser from "./BurgerMenu";
 
@@ -10,6 +11,9 @@ function UserPage() {
     <div className="user-page">
       <div className="user-menu">
         <BurgerMenuUser />
+      </div>
+      <div className="user-side">
+        <SideBar />
       </div>
       <Switch>
         <Route
