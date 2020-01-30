@@ -34,7 +34,6 @@ class BookPage extends Component {
   }
 
   render() {
-    // return <p>lqsdn</p>;
     const  { allBooks }  = this.state;
     return <BookList books={allBooks} handleDelete={this.handleDelete} />;
   }
