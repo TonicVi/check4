@@ -27,6 +27,26 @@ app.post("/next/book", (req, res) => {
   });
 });
 
+app.put(`/next/book/:id`, (req, res) => {
+  const { id } = req.params;
+  const formData = req.body;
+  connection.query(
+    `UPDATE book SET ? WHERE id = ${id}`,
+    formData,
+    (err, results) => {
+      if (err) {
+        res.status(500).json({
+          status: err
+        });
+      }
+      res.status(201).json({
+        status: "success",
+        message: { results }
+      });
+    }
+  );
+});
+
 //GET ALL BOOKS ADMIN
 app.get("/next/book", (req, res) => {
   connection.query(`SELECT * FROM book`, (err, results) => {
@@ -69,13 +89,13 @@ app.delete("/next/book/:id", (req, res) => {
 });
 
 //DELETE FAV LINKED TO BOOK ON ADMIN
-app.delete('/next/book/fav/:id', (req, res) => {
+app.delete("/next/book/fav/:id", (req, res) => {
   const { id } = req.params;
   connection.query(`DELETE FROM next WHERE id_book = ${id}`, err => {
     if (err) {
-      res.status(500).send('Error while deleting favorites');
+      res.status(500).send("Error while deleting favorites");
     } else {
-      res.status(200).send('Favorites were deleted');
+      res.status(200).send("Favorites were deleted");
     }
   });
 });

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import BookList from "./BookList";
-import NextBooks from "./NextBooks";
 import "./bookList.css";
 
 class AllBooks extends Component {
