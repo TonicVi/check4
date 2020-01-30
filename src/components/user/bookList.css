@@ -1,3 +1,24 @@
+.user-page {
+  width: 100vw;
+  height: 100vh;
+}
+
+.all-books-container {
+  display: grid;
+  grid-template-rows: 2% 3% auto;
+}
+
+.all-books-title {
+  font-family: SpecialElite-Regular;
+  justify-self: end;
+  grid-row-start: 2;
+  margin: 0 30px;
+}
+
+.all-books-list {
+  grid-row-start: 3;
+}
+
 .user-list-container {
   display: grid;
   grid-template-columns: 5% 25% 1% 45% 20% 4%;
@@ -6,14 +27,15 @@
 }
 
 .user-list-cover {
-  grid-area: 1 / 2 / 6 / 3;
+  grid-area: 2 / 1 / 6 / 3;
+  min-width: 100%;
   max-width: 100%;
-  max-height: auto;
   padding-right: 2px;
 }
 
 .user-list-title {
   grid-area: 2 / 4 / 3 / 5;
+  margin: 0;
 }
 
 .user-list-author {
@@ -28,4 +50,92 @@
   grid-area: 3 / 5 / 4 / 6;
   background: transparent;
   border: none;
+}
+
+.next-books-container {
+  display: grid;
+  grid-template-rows: 5% 5% auto;
+}
+
+.next-books-title {
+  font-family: SpecialElite-Regular;
+  justify-self: end;
+  grid-row-start: 2;
+  margin: 0 30px;
+}
+
+.next-books-list {
+  font-family: Bitter-Regular;
+  grid-row-start: 3;
+  margin-top: 25px;
+}
+
+.user-next-page2 {
+  display: none;
+}
+
+@media screen and (min-width: 767px) {
+  .all-books-title {
+    font-size: 28px;
+  }
+
+  .all-list-cover {
+    grid-area: 1 / 2 / 6 / 3;
+    max-height: 420px;
+  }
+
+  .all-books-list {
+    font-size: 18px;
+    justify-self: center;
+  }
+
+  .next-books-title {
+    font-size: 28px;
+  }
+
+  .next-books-list {
+    font-size: 18px;
+    justify-self: center;
+  }
+
+  .user-list-cover {
+    grid-area: 1 / 2 / 6 / 3;
+    max-height: 420px;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .user-menu {
+    display: none;
+  }
+
+  .user-next-page1 {
+    display: none;
+  }
+
+  .user-page {
+    display: grid;
+    grid-template-columns: 35% 65%;
+  }
+
+  .user-next-page2 {
+    grid-column-start: 1;
+    display: block;
+    position: absolute;
+    width: 35%;
+    background-color: #a13941ff;
+    height: 1000vh;
+  }
+
+  .user-books-page {
+    grid-column-start: 2;
+  }
+
+  .next-books-title {
+    color: #fcf6f5;
+  }
+
+  .next-books-list {
+    margin-top: 70px;
+  }
 }

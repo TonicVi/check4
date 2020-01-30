@@ -2,24 +2,39 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import AllBooks from "./AllBooks";
 import NextBooks from "./NextBooks";
-import BurgerMenuUser from './BurgerMenu';
+import "./bookList.css";
+import BurgerMenuUser from "./BurgerMenu";
 
 function UserPage() {
   return (
-    <>
-    <div className="user-menu">
-      <BurgerMenuUser />
+    <div className="user-page">
+      <div className="user-menu">
+        <BurgerMenuUser />
+      </div>
+      <Switch>
+        <Route
+          path="/user/nextbooks"
+          render={() => (
+            <div className="user-next-page1">
+              <NextBooks />
+            </div>
+          )}
+        />
+        <Route
+          path="/user"
+          render={() => (
+            <>
+            <div className="user-books-page">
+              <AllBooks />
+            </div>
+            <div className="user-next-page2">
+              <NextBooks />
+            </div>
+            </>
+          )}
+        />
+      </Switch>
     </div>
-    <Switch>
-      <Route path="/user/nextbooks">
-        <NextBooks />
-      </Route>
-      <Route path="/user">
-        <AllBooks />
-      </Route>
-
-    </Switch>
-    </>
   );
 }
 
