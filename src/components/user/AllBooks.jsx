@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import BookList from "./BookList";
+import "./bookList.css";
 
 class AllBooks extends Component {
   constructor(props) {
@@ -19,22 +20,20 @@ class AllBooks extends Component {
 
   makeFav(bookId) {
     axios
-    .post(`/next/fav/${bookId}`, {
-      id_book: bookId,
-      id_user: 1
-    })
-    .then(this.getData());
+      .post(`/next/fav/${bookId}`, {
+        id_book: bookId,
+        id_user: 1
+      })
+      .then(this.getData());
   }
 
   deleteFav(nextId) {
-    axios
-    .delete(`/next/fav/${nextId}`)
-    .then(this.getData());
+    axios.delete(`/next/fav/${nextId}`).then(this.getData());
   }
 
   getData() {
     axios
-      .get('/next/list')
+      .get("/next/list")
       .then(res => res.data)
       .then(data =>
         this.setState({
@@ -46,10 +45,16 @@ class AllBooks extends Component {
   render() {
     const { allBooks } = this.state;
     return (
-      <>
-        <h4>All the possibilities</h4>
-        <BookList books={allBooks} makeFav={this.makeFav} deleteFav={this.deleteFav} />
-      </>
+      <div className="all-books-container">
+        <h4 className="all-books-title">All the possibilities</h4>
+        <div className="all-books-list">
+          <BookList
+            books={allBooks}
+            makeFav={this.makeFav}
+            deleteFav={this.deleteFav}
+          />
+        </div>
+      </div>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import BookList from "./BookList";
+import "./bookList.css";
 
 class BookPage extends Component {
   constructor(props) {
@@ -28,14 +29,19 @@ class BookPage extends Component {
   }
 
   handleDelete(bookId) {
-    axios
-    .delete(`/next/book/${bookId}`)
-    .then(this.getData())
+    axios.delete(`/next/book/${bookId}`).then(this.getData());
   }
 
   render() {
-    const  { allBooks }  = this.state;
-    return <BookList books={allBooks} handleDelete={this.handleDelete} />;
+    const { allBooks } = this.state;
+    return (
+      <div className="admin-book-container">
+        <h4 className="admin-book-title">Manage books</h4>
+        <div className="admin-book-list">
+          <BookList books={allBooks} handleDelete={this.handleDelete} />;
+        </div>
+      </div>
+    );
   }
 }
 

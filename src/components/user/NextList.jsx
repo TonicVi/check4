@@ -1,5 +1,5 @@
 import React from "react";
-// import './bookList.css';
+import './bookList.css';
 import full from "../../images/full.png";
 
 function NextList(props) {

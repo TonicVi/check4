@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NextList from "./NextList";
+import "./bookList.css";
 
 class NextBooks extends Component {
   constructor(props) {
@@ -34,10 +35,12 @@ class NextBooks extends Component {
   render() {
     const { nextBooks } = this.state;
     return (
-      <>
-        <h4>My Next Readings</h4>
-        <NextList nextBooks={nextBooks} deleteFav={this.deleteFav} />
-      </>
+      <div className="next-books-container">
+        <h4 className="next-books-title">My Next Readings</h4>
+        <div className="next-books-list">
+          <NextList nextBooks={nextBooks} deleteFav={this.deleteFav} />
+        </div>
+      </div>
     );
   }
 }

@@ -98,7 +98,7 @@ class FormBook extends Component {
             />
           </label>
           <button type="submit" className="form-book-button">
-            Add new book
+            Add
           </button>
         </form>
       </div>
