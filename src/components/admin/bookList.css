@@ -7,6 +7,7 @@
   grid-template-columns: 5% 25% 1% 45% 20% 4%;
   grid-template-rows: 4.5% 30% 30% 30% 4.5%;
   margin: 15px;
+  margin-top: 20px;
 }
 
 .admin-list-cover {
@@ -30,12 +31,20 @@
 }
 
 .admin-delete-button {
-  grid-area: 3 / 5 / 4 / 6;
+  grid-area: 4 / 5 / 5 / 6;
+  align-self: start;
   background: transparent;
   border: none;
 }
 
-.cross {
+.admin-modify-button {
+  grid-area: 2 / 5 / 3 / 6;
+  align-self: end;
+  background: transparent;
+  border: none;
+}
+
+.cross, .pen {
   width: 32px;
 }
 
@@ -72,10 +81,10 @@
 
   .admin-book-list {
     font-size: 18px;
-    justify-self: center;
+    /* justify-self: center; */
   }
 
-  .cross {
+  .cross, .pen {
     width: 48px;
   }
 }
@@ -86,6 +95,10 @@
     position: fixed;
     width: 30%;
     height: 100vh;
+    background-color: #a13941ff;
+    grid-column-start: 1;
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
   }
 
   .admin-menu {
@@ -97,13 +110,6 @@
     width: 100vw;
     height: 100vh;
     grid-template-columns: 30% 70%;
-  }
-
-  .admin-side {
-    background-color: #a13941ff;
-    grid-column-start: 1;
-    display: grid;
-    grid-template-rows: 33% 33% 33%;
   }
 
   .admin-link1 {
@@ -126,6 +132,7 @@
 
   .admin-book-page {
     grid-column-start: 2;
+    /* width: 70%; */
   }
 
   .admin-form-page {
@@ -134,6 +141,7 @@
 
   .admin-book-container {
     display: grid;
-    grid-template-rows: 2% 3% 95%;
+    grid-template-rows: 2% 3% auto;
+    /* overflow: visible; */
   }
 }

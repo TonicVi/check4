@@ -24,7 +24,7 @@ class AllBooks extends Component {
         id_book: bookId,
         id_user: 1
       })
-      .then(this.getData());
+      .then(this.getData())
   }
 
   deleteFav(nextId) {

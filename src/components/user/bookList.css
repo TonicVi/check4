@@ -55,6 +55,7 @@
 .next-books-container {
   display: grid;
   grid-template-rows: 5% 5% auto;
+  height: 100%;
 }
 
 .next-books-title {
@@ -70,7 +71,7 @@
   margin-top: 25px;
 }
 
-.user-next-page2 {
+.user-side {
   display: none;
 }
 
@@ -86,7 +87,6 @@
 
   .all-books-list {
     font-size: 18px;
-    justify-self: center;
   }
 
   .next-books-title {
@@ -95,7 +95,6 @@
 
   .next-books-list {
     font-size: 18px;
-    justify-self: center;
   }
 
   .user-list-cover {
@@ -109,33 +108,49 @@
     display: none;
   }
 
-  .user-next-page1 {
-    display: none;
+  .user-side {
+    display: block;
+    position: fixed;
+    width: 30%;
+    height: 100vh;
+    background-color: #a13941ff;
+    grid-column-start: 1;
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
   }
 
   .user-page {
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 30% 70%;
   }
 
-  .user-next-page2 {
-    grid-column-start: 1;
-    display: block;
-    position: absolute;
-    width: 35%;
-    background-color: #a13941ff;
-    height: 1000vh;
+  .next-books-container {
+    grid-column-start: 2;
   }
 
   .user-books-page {
     grid-column-start: 2;
   }
 
-  .next-books-title {
-    color: #fcf6f5;
+  .user-next-page1 {
+    grid-column-start: 2;
   }
 
+  .all-books-title {
+    grid-area: 2 / 2 / 3 / 3;
+    align-self: center;
+  }
+
+  .all-books-list {
+    grid-area: 3 / 1 / 4 / 3;
+  }
+
+  .next-books-title {
+    grid-area: 2 / 2 / 3 / 3;
+    align-self: center;
+  }
+  
   .next-books-list {
-    margin-top: 70px;
+    grid-area: 3 / 1 / 4 / 3;
   }
 }
