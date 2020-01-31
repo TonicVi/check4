@@ -36,6 +36,9 @@ class NextBooks extends Component {
     const { nextBooks } = this.state;
     return (
       <div className="next-books-container">
+        <div className="site-name">
+          <h3>NEXT</h3>
+        </div>
         <h4 className="next-books-title">My Next Readings</h4>
         <div className="next-books-list">
           <NextList nextBooks={nextBooks} deleteFav={this.deleteFav} />

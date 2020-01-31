@@ -13,7 +13,7 @@ function Welcome() {
         user
       </NavLink>
       <h2 className="welcome-header">What should you read next?</h2>
-      <h4 className="welcome-content">You'll never forget with NEXT</h4>
+      <h4 className="welcome-content">You'll never forget with <em>NEXT</em></h4>
       <img src={library} alt='cozy library' className="welcome-img" />
     </div>
   );

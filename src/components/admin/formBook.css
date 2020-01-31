@@ -47,6 +47,10 @@
   font-family: SpecialElite-Regular;
 }
 
+.ui.dimmer {
+  width: 99% !important;
+}
+
 @media screen and (min-width: 767px) {
   .form-book-button {
     min-width: 160px;

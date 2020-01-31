@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import AllBooks from "./AllBooks";
 import NextBooks from "./NextBooks";
-import SideBar from './SideBar';
+import SideBar from "./SideBar";
 import "./bookList.css";
 import BurgerMenuUser from "./BurgerMenu";
 
