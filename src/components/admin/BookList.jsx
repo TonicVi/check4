@@ -8,18 +8,12 @@ import pen from "../../images/pen.png";
 function BookList(props) {
   const { books, handleDelete, isEditing, editBook, getBooks } = props;
   const [selectedBook, setSelectedBook] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
-
-  function handleClose() {
-    setModalOpen(false);
-  }
 
   return books.map(book => {
     const bookId = book.id;
     function getRightForm(bookId) {
       editBook(bookId);
       setSelectedBook(bookId);
-      // setModalOpen(true);
     }
     return (
       <div className="admin-list-container" key={book.id}>
@@ -53,7 +47,7 @@ function BookList(props) {
               cover={book.cover}
               isEditing={isEditing}
               bookId={book.id}
-              handleClose={props.handleClose}
+              getBooks={getBooks}
             />
           )}
         </Modal>
