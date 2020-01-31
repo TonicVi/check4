@@ -63,13 +63,14 @@ class FormBook extends Component {
   handleEdit() {
     const { title, author, genre, cover } = this.state;
     const { bookId, getBooks } = this.props;
-    axios.put(`/next/book/${bookId}`, {
-      title,
-      author,
-      genre,
-      cover
-    })
-    .then(getBooks)
+    axios
+      .put(`/next/book/${bookId}`, {
+        title,
+        author,
+        genre,
+        cover
+      })
+      .then(getBooks);
   }
 
   render() {
@@ -77,7 +78,11 @@ class FormBook extends Component {
     const { isEditing } = this.props;
     return (
       <div className="form-book-container">
-        <h3 className="form-book-header">Add a new book</h3>
+        {isEditing ? (
+          <h3 className="form-book-header">Modify a book</h3>
+        ) : (
+          <h3 className="form-book-header">Add a new book</h3>
+        )}
         <form className="form-book">
           <label htmlFor="title" className="form-book-title">
             <input
