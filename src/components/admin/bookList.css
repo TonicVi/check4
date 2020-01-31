@@ -1,11 +1,17 @@
+.admin-page {
+  width: 100vw;
+  height: 100vh;
+}
 .admin-list-container {
   display: grid;
   grid-template-columns: 5% 25% 1% 45% 20% 4%;
   grid-template-rows: 4.5% 30% 30% 30% 4.5%;
+  margin: 15px;
+  margin-top: 20px;
 }
 
 .admin-list-cover {
-  grid-area: 1 / 2 / 6 / 3;
+  grid-area: 2 / 1 / 6 / 3;
   max-width: 100%;
   max-height: 100%;
   padding-right: 2px;
@@ -13,6 +19,7 @@
 
 .admin-list-title {
   grid-area: 2 / 4 / 3 / 5;
+  margin: 0;
 }
 
 .admin-list-author {
@@ -24,5 +31,117 @@
 }
 
 .admin-delete-button {
-  grid-area: 3 / 5 / 4 / 6;
+  grid-area: 4 / 5 / 5 / 6;
+  align-self: start;
+  background: transparent;
+  border: none;
+}
+
+.admin-modify-button {
+  grid-area: 2 / 5 / 3 / 6;
+  align-self: end;
+  background: transparent;
+  border: none;
+}
+
+.cross, .pen {
+  width: 32px;
+}
+
+.admin-book-container {
+  display: grid;
+  grid-template-rows: 2% 3% auto;
+}
+
+.admin-book-title {
+  font-family: SpecialElite-Regular;
+  justify-self: end;
+  grid-row-start: 2;
+  margin: 0 30px;
+}
+
+.admin-book-list {
+  font-family: Bitter-Regular;
+  grid-row-start: 3;
+}
+
+.admin-side {
+  display: none;
+}
+
+@media screen and (min-width: 767px) {
+  .admin-book-title {
+    font-size: 28px;
+  }
+
+  .admin-list-cover {
+    grid-area: 1 / 2 / 6 / 3;
+    max-height: 420px;
+  }
+
+  .admin-book-list {
+    font-size: 18px;
+    /* justify-self: center; */
+  }
+
+  .cross, .pen {
+    width: 48px;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .admin-side {
+    display: block;
+    position: fixed;
+    width: 30%;
+    height: 100vh;
+    background-color: #a13941ff;
+    grid-column-start: 1;
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+  }
+
+  .admin-menu {
+    display: none;
+  }
+
+  .admin-page {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 30% 70%;
+  }
+
+  .admin-link1 {
+    grid-row-start: 1;
+  }
+
+  .desktop-link {
+    align-self: center;
+    justify-self: end;
+    color: #fcf6f5;
+    font-family: SpecialElite-Regular;
+    font-size: 18px;
+    padding-right: 15px;
+    text-decoration: none;
+  }
+
+  .desktop-link:hover {
+    font-size: 21px;
+  }
+
+  .admin-book-page {
+    grid-column-start: 2;
+    /* width: 70%; */
+  }
+
+  .admin-form-page {
+    grid-column-start: 2;
+  }
+
+  .admin-book-container {
+    display: grid;
+    grid-template-rows: 2% 3% auto;
+    /* overflow: visible; */
+  }
 }

@@ -13,7 +13,20 @@ class FormBook extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
     this.clearAll = this.clearAll.bind(this);
+  }
+
+  componentDidMount() {
+    const { title, author, genre, cover, isEditing } = this.props;
+    if (isEditing) {
+      this.setState({
+        title,
+        author,
+        genre,
+        cover
+      });
+    }
   }
 
   handleChange(e) {
@@ -47,12 +60,25 @@ class FormBook extends Component {
     this.clearAll();
   }
 
+  handleEdit() {
+    const { title, author, genre, cover } = this.state;
+    const { bookId, getBooks } = this.props;
+    axios.put(`/next/book/${bookId}`, {
+      title,
+      author,
+      genre,
+      cover
+    })
+    .then(getBooks)
+  }
+
   render() {
     const { title, author, genre, cover } = this.state;
+    const { isEditing } = this.props;
     return (
       <div className="form-book-container">
         <h3 className="form-book-header">Add a new book</h3>
-        <form onSubmit={this.handleSubmit} className="form-book">
+        <form className="form-book">
           <label htmlFor="title" className="form-book-title">
             <input
               type="text"
@@ -97,9 +123,23 @@ class FormBook extends Component {
               required
             />
           </label>
-          <button type="submit" className="form-book-button">
-            Add new book
-          </button>
+          {isEditing ? (
+            <button
+              type="button"
+              onClick={this.handleEdit}
+              className="form-book-button"
+            >
+              Modify
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={this.handleSubmit}
+              className="form-book-button"
+            >
+              Add
+            </button>
+          )}
         </form>
       </div>
     );
