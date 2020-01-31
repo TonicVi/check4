@@ -81,7 +81,7 @@
 
   .admin-book-list {
     font-size: 18px;
-    justify-self: center;
+    /* justify-self: center; */
   }
 
   .cross, .pen {
@@ -132,6 +132,7 @@
 
   .admin-book-page {
     grid-column-start: 2;
+    /* width: 70%; */
   }
 
   .admin-form-page {
@@ -140,6 +141,7 @@
 
   .admin-book-container {
     display: grid;
-    grid-template-rows: 2% 3% 95%;
+    grid-template-rows: 2% 3% auto;
+    /* overflow: visible; */
   }
 }

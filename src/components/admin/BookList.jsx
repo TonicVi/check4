@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import "./bookList.css";
-import FormBook from './FormBook';
+import FormBook from "./FormBook";
+import { Modal } from "semantic-ui-react";
 import remove from "../../images/remove2.png";
 import pen from "../../images/pen.png";
 
 function BookList(props) {
-  const { books, handleDelete, isEditing, editBook } = props;
-  const [ selectedBook, setSelectedBook ] = useState(null);
+  const { books, handleDelete, isEditing, editBook, getBooks } = props;
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function handleClose() {
+    setModalOpen(false);
+  }
+
   return books.map(book => {
     const bookId = book.id;
     function getRightForm(bookId) {
       editBook(bookId);
       setSelectedBook(bookId);
+      // setModalOpen(true);
     }
     return (
       <div className="admin-list-container" key={book.id}>
@@ -26,19 +34,29 @@ function BookList(props) {
         >
           <img src={remove} alt="delete icon" className="cross" />
         </button>
-        <button type="button" onClick={() => getRightForm(bookId)} className="admin-modify-button">
-          <img src={pen} alt="modify icon" className="pen" />
-        </button>
-        {selectedBook === book.id && (
-          <FormBook
-            title={book.title}
-            author={book.author}
-            genre={book.genre}
-            cover={book.cover}
-            isEditing={isEditing}
-            bookId={book.id}
-          />
-        )}
+        <Modal
+          trigger={
+            <button
+              type="button"
+              onClick={() => getRightForm(bookId)}
+              className="admin-modify-button"
+            >
+              <img src={pen} alt="modify icon" className="pen" />
+            </button>
+          }
+        >
+          {selectedBook === book.id && (
+            <FormBook
+              title={book.title}
+              author={book.author}
+              genre={book.genre}
+              cover={book.cover}
+              isEditing={isEditing}
+              bookId={book.id}
+              handleClose={props.handleClose}
+            />
+          )}
+        </Modal>
       </div>
     );
   });

@@ -55,7 +55,7 @@
 .next-books-container {
   display: grid;
   grid-template-rows: 5% 5% auto;
-  height: 100vh;
+  height: 100%;
 }
 
 .next-books-title {
@@ -122,6 +122,10 @@
   .user-page {
     display: grid;
     grid-template-columns: 30% 70%;
+  }
+
+  .next-books-container {
+    grid-column-start: 2;
   }
 
   .user-books-page {

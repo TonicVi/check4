@@ -44,7 +44,7 @@ class BookPage extends Component {
       <div className="admin-book-container">
         <h4 className="admin-book-title">Manage books</h4>
         <div className="admin-book-list">
-          <BookList books={allBooks} isEditing={isEditing} editBook={this.editBook} handleDelete={this.handleDelete} />;
+          <BookList books={allBooks} isEditing={isEditing} editBook={this.editBook} handleDelete={this.handleDelete} getBooks={this.getData} />;
         </div>
       </div>
     );

@@ -62,13 +62,14 @@ class FormBook extends Component {
 
   handleEdit() {
     const { title, author, genre, cover } = this.state;
-    const { bookId } = this.props;
+    const { bookId, getBooks } = this.props;
     axios.put(`/next/book/${bookId}`, {
       title,
       author,
       genre,
       cover
-    });
+    })
+    .then(getBooks)
   }
 
   render() {
